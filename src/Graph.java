@@ -54,4 +54,53 @@ public class Graph {
   }
   
 
+
+  
+//AULA 10.08.22
+
+  public int highestDegree(){
+    int highest =0;
+    for(int i=0; i<this.adjMatrix.length; ++i){
+      int degreeNodeI = this.degree(i);
+      if (highest < degreeNodeI){
+        highest = this.degree(i);
+      }
+
+    }
+    return highest;
+  }
+
+  public int lowestDegree(){
+    int lowest = 0;
+    for(int j=0; j<this.adjMatrix.length; ++j){
+    int degreeNodeI = this.degree(j);
+      if (lowest > degreeNodeI){
+        lowest = this.degree(j);
+      }      
+
+    }
+    return lowest;    
+   
+  }
+
+
+  public Graph complement(){
+
+    Graph complementGraph = new Graph(this.adjMatrix.length);
+    for (int i = 0; i <this.adjMatrix.length; i++){
+      for (int j = 0; j < this.adjMatrix[i].length; j++){
+        if (this.adjMatrix[i][j] == 0 && i != j){
+          complementGraph.addEdge(i, j, 1);
+        }
+      }
+    }
+    return complementGraph;
+  }
+
+
+
+
+
+
+
 }
